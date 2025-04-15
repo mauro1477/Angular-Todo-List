@@ -20,18 +20,35 @@ export class AppComponent {
   todoListText : String = "";
   title = 'My Check List';
   listFilter : String = '0';
-  visibleListItems : todoListItem[] = this.items;
+
+  get visibleListItems() : todoListItem[] {
+    let value = this.listFilter;
+    if(value === '0'){
+      return this.items
+    }else if(value === '1'){
+      return this.items.filter(item => !item.isComplete);
+    }else{
+      return this.items.filter(item => item.isComplete);
+    }
+  };
+
   addTodoListItem(){
     this.items.push(new todoListItem(this.todoListText))
     this.todoListText = "";
   }
-  filterChanged(value : any){
-    if(value === '0'){
-      this.visibleListItems = this.items
-    }else if(value === '1'){
-      this.visibleListItems = this.items.filter(item => !item.isComplete);
-    }else{
-      this.visibleListItems = this.items.filter(item => item.isComplete);
-    }
+
+  // filterChanged(value : any){
+  //   if(value === '0'){
+  //     this.visibleListItems = this.items
+  //   }else if(value === '1'){
+  //     this.visibleListItems = this.items.filter(item => !item.isComplete);
+  //   }else{
+  //     this.visibleListItems = this.items.filter(item => item.isComplete);
+  //   }
+  // }
+
+  toggledIsComplete(item : todoListItem){
+    item.isComplete = !item.isComplete;
+    console.log(item);
   }
 }

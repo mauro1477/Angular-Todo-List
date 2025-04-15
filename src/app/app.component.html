@@ -7,15 +7,7 @@
 <main class="main">
     <div class="content">
         <h1>{{ title }}</h1>
-        <div class="row gx-3 gy-2 justify-content-center align-items-center">
-            <div class="col-sm-6">
-                <label class="visually-hidden" for="todo-list-input"></label>
-                <input [(ngModel)]="todoListText" class="form-control" type="text" name="todo-list-text" id="">
-            </div>
-            <div class="col-auto">
-                <button (click)="addTodoListItem()" class="btn btn-primary" type="submit">Submit</button>
-            </div>
-        </div>
+        <todo-form (addTodo)="items.push($event)"></todo-form>
         <div class="row mt3">
             <div class="col-sm-2">
                 <select [(ngModel)]="listFilter" class="form-select" name="" id="">

@@ -3,10 +3,11 @@ import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { todoListItem } from '../shared/modules/todoListItem';
+import { TodoFormComponent } from "./todo-form/todo-form.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,FormsModule,TodoListComponent],
+  imports: [RouterOutlet, FormsModule, TodoListComponent, TodoFormComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -31,11 +32,6 @@ export class AppComponent {
       return this.items.filter(item => item.isComplete);
     }
   };
-
-  addTodoListItem(){
-    this.items.push(new todoListItem(this.todoListText))
-    this.todoListText = "";
-  }
 
   // filterChanged(value : any){
   //   if(value === '0'){

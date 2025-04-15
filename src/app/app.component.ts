@@ -20,5 +20,6 @@ export class AppComponent {
 
   addTodoListItem(){
     this.items.push(new todoListItem(this.todoListText))
+    this.todoListText = "";
   }
 }

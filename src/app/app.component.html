@@ -1,27 +1,36 @@
 <style>
-  .wish-list{
-    list-style: none;
-  }
+    .wish-list {
+        list-style: none;
+    }
 </style>
 
 <main class="main">
-  <div class="content">
-    <h1>{{ title }}</h1>
-    <div class="contenter">
-      <div *ngIf="items.length === 0">
-        There are no list items to display.
-      </div>
-      <ul class="wish-list">
-        <li *ngFor="let item of items">
-          <div class="form-check" >
-            <label class="form-check-label" for="">
+    <div class="content">
+        <h1>{{ title }}</h1>
+        <div class="row gx-3 gy-2 justify-content-center align-items-center">
+            <div class="col-sm-6">
+                <label class="visually-hidden" for="todo-list-input"></label>
+                <input [(ngModel)]="todoListText" class="form-control" type="text" name="" id="">
+            </div>
+            <div class="col-auto">
+                <button (click)="addTodoListItem()" class="btn btn-primary" type="submit">Submit</button>
+            </div>
+        </div>
+        <div class="contenter">
+            <div *ngIf="items.length === 0">
+                There are no list items to display.
+            </div>
+            <ul class="wish-list">
+                <li *ngFor="let item of items">
+                    <div class="form-check">
+                        <label class="form-check-label" for="">
               <input class="form-check-input"  type="checkbox" name="" id="">{{item.todoListText}}
             </label>
-          </div>
-        </li>
-      </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 </main>
 
 <router-outlet />

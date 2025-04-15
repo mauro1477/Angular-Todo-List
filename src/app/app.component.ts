@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { todoListItem } from '../shared/modules/todoListItem';
-import { NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TodoListComponent } from './todo-list/todo-list.component';
+import { todoListItem } from '../shared/modules/todoListItem';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,NgFor,NgIf,FormsModule],
+  imports: [RouterOutlet,FormsModule,TodoListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -46,9 +46,4 @@ export class AppComponent {
   //     this.visibleListItems = this.items.filter(item => item.isComplete);
   //   }
   // }
-
-  toggledIsComplete(item : todoListItem){
-    item.isComplete = !item.isComplete;
-    console.log(item);
-  }
 }

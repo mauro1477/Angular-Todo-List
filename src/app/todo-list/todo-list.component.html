@@ -1,0 +1,18 @@
+<div *ngIf="todos.length === 0">
+    There are no list items to display.
+</div>
+<ul class="wish-list">
+    <li *ngFor="let item of todos">
+        <div class="form-check">
+            <label class="form-check-label" for="">
+  <input 
+  [checked]="item.isComplete"
+  (click)="toggledIsComplete(item)"
+  class="form-check-input"  
+  type="checkbox" 
+  name="" 
+  id="">{{item.todoListText}}
+</label>
+        </div>
+    </li>
+</ul>

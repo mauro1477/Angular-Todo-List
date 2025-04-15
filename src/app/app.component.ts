@@ -13,13 +13,25 @@ import { FormsModule } from '@angular/forms';
 export class AppComponent {
   items : todoListItem[] = [
     new todoListItem('Clean Kitchen'),
-    new todoListItem('Apply for jobs')
+    new todoListItem('Apply for jobs'),
+    new todoListItem('Get Coffe', true)
+
   ];
   todoListText : String = "";
   title = 'My Check List';
-
+  listFilter : String = '0';
+  visibleListItems : todoListItem[] = this.items;
   addTodoListItem(){
     this.items.push(new todoListItem(this.todoListText))
     this.todoListText = "";
+  }
+  filterChanged(value : any){
+    if(value === '0'){
+      this.visibleListItems = this.items
+    }else if(value === '1'){
+      this.visibleListItems = this.items.filter(item => !item.isComplete);
+    }else{
+      this.visibleListItems = this.items.filter(item => item.isComplete);
+    }
   }
 }

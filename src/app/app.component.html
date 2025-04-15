@@ -16,16 +16,29 @@
                 <button (click)="addTodoListItem()" class="btn btn-primary" type="submit">Submit</button>
             </div>
         </div>
-        <div class="row "></div>
+        <div class="row mt3">
+            <div class="col-sm-2">
+                <select [(ngModel)]="listFilter" (ngModelChange)="filterChanged($event)" class="form-select" name="" id="">
+                <option value="0">All</option>
+                <option value="1">Uncompleted</option>
+                <option value="2">Completed</option>
+            </select>
+            </div>
+        </div>
         <div class="contenter">
-            <div *ngIf="items.length === 0">
+            <div *ngIf="visibleListItems.length === 0">
                 There are no list items to display.
             </div>
             <ul class="wish-list">
-                <li *ngFor="let item of items">
+                <li *ngFor="let item of visibleListItems">
                     <div class="form-check">
                         <label class="form-check-label" for="">
-              <input class="form-check-input"  type="checkbox" name="" id="">{{item.todoListText}}
+              <input 
+              [checked]="item.isComplete"
+              class="form-check-input"  
+              type="checkbox" 
+              name="" 
+              id="">{{item.todoListText}}
             </label>
                     </div>
                 </li>

@@ -26,8 +26,4 @@ export class AppComponent {
 
   filter : any = ()=> {};
 
-  get visibleListItems() : todoListItem[] {
-    return this.items.filter(this.filter);
-  };
-
 }

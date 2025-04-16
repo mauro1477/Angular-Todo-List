@@ -10,7 +10,7 @@
         <todo-form (addTodo)="items.push($event)"></todo-form>
         <todo-filter (filter)="filter = $event"></todo-filter>
         <div class="contenter">
-            <todo-list [todos]="visibleListItems"></todo-list>
+            <todo-list [todos]="items.filter(filter)"></todo-list>
         </div>
     </div>
 </main>

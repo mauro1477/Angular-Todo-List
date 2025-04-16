@@ -20,10 +20,5 @@ export class AppComponent {
     new todoListItem('Get Coffe', true)
 
   ];
-  todoListText : String = "";
-  title = 'My Check List';
-  listFilter : any = '0';
-
-  filter : any = ()=> {};
-
+  filter : any;
 }

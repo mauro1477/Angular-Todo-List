@@ -6,9 +6,8 @@
 
 <main class="main">
     <div class="content">
-        <h1>{{ title }}</h1>
         <todo-form (addTodo)="items.push($event)"></todo-form>
-        <todo-filter (filter)="filter = $event"></todo-filter>
+        <todo-filter [(filter)]="filter"></todo-filter>
         <div class="contenter">
             <todo-list [todos]="items.filter(filter)"></todo-list>
         </div>

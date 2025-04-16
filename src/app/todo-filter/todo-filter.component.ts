@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { todoListItem } from '../../shared/modules/todoListItem';
 import { FormsModule } from '@angular/forms';
 
@@ -16,15 +16,18 @@ const filters = [
   styleUrl: './todo-filter.component.scss'
 })
 export class TodoFilterComponent implements OnInit {  
-  @Output() filter = new EventEmitter<any>();
+ @Input() filter : any; 
+  @Output() filterChange = new EventEmitter<any>();
+
   constructor (){};
   ngOnInit(): void {
-    this.changeFilter('0');
+    this.updateFilter('0');
   }
   listFilter : any = '0';
 
-  changeFilter( value : any){
-    this.filter.emit(filters[value]);
+  updateFilter( value : any){
+    this.filter = filters[value];
+    this.filterChange.emit(filters[value]);
   }
 
 }

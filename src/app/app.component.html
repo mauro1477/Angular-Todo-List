@@ -8,15 +8,7 @@
     <div class="content">
         <h1>{{ title }}</h1>
         <todo-form (addTodo)="items.push($event)"></todo-form>
-        <div class="row mt3">
-            <div class="col-sm-2">
-                <select [(ngModel)]="listFilter" class="form-select" name="" id="">
-                <option value="0">All</option>
-                <option value="1">Uncompleted</option>
-                <option value="2">Completed</option>
-            </select>
-            </div>
-        </div>
+        <todo-filter (filter)="filter = $event"></todo-filter>
         <div class="contenter">
             <todo-list [todos]="visibleListItems"></todo-list>
         </div>

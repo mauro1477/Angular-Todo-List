@@ -5,12 +5,19 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { todoListItem } from '../shared/modules/todoListItem';
 import { TodoFormComponent } from "./todo-form/todo-form.component";
 
+const filters = [
+  (item : todoListItem) => item,
+  (item : todoListItem) => !item.isComplete,
+  (item : todoListItem) => item.isComplete
+];
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, FormsModule, TodoListComponent, TodoFormComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
+
 export class AppComponent {
   items : todoListItem[] = [
     new todoListItem('Clean Kitchen'),
@@ -18,19 +25,13 @@ export class AppComponent {
     new todoListItem('Get Coffe', true)
 
   ];
+
   todoListText : String = "";
   title = 'My Check List';
-  listFilter : String = '0';
+  listFilter : any = '0';
 
   get visibleListItems() : todoListItem[] {
-    let value = this.listFilter;
-    if(value === '0'){
-      return this.items
-    }else if(value === '1'){
-      return this.items.filter(item => !item.isComplete);
-    }else{
-      return this.items.filter(item => item.isComplete);
-    }
+    return this.items.filter(filters[this.listFilter]);
   };
 
   // filterChanged(value : any){
